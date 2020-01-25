@@ -1,0 +1,53 @@
+body {
+    font-size:16px;
+    font-family: Verdana, sans-serif;
+}
+
+.container {
+    width: 300px;
+    margin: auto;
+}
+
+/* user info*/
+#user {
+    margin:auto;
+    width:400px;
+}
+
+#user p {
+    font-size:20px;
+    font-weight:bold;
+}
+
+/*todo list*/
+#todo h1 {
+    font-size:17px;
+    border-bottom: 1px solid #ddd;
+    padding: 17px 0;
+
+}
+
+#todo li {
+    line-height: 1.5;
+}
+
+#todo input[type="text"] {
+    padding:2px;
+}
+
+.command {
+    font-size:12px;
+    cursor:pointer;
+    color: #08c;
+}
+
+#todo ul {
+    padding: 0;
+    list-style: none;
+
+}
+
+#todo li span.done {
+    text-decoration: line-through;
+    color: #bbb
+}

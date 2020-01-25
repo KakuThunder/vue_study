@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <meta charset="utf-8">
+        <title>Vue Sample</title>
+        <link rel="stylesheet" href="css/vuestyle.css">
+    </head>
+    <body>
+        <div id="user">
+            <!-- {{}} の中はscript 処理も書ける　-->
+            <p>Hello {{name.toUpperCase() }}</p>
+            <!-- input の内容が #vueapp.data.nameと紐づく-->
+            <p><input type="hidden" v-model="name"></p>
+        </div>
+
+        <div id="todo" class="container">
+            <h1> Todos</h1>
+
+            <ul>
+                <!-- vuetasks.data.tasksの中身を展開-->
+                <li v-for="(todo,index) in tasks">
+                    <input type="checkbox" v-model="todo.status">
+                    <span v-bind:class="{done: todo.status}">{{todo.name}}</span> <!-- -->
+                    <span @click="deleteItem(index)" class="command">[x]</span>
+                </li>
+                <li v-show="!tasks.length">Nothing todo</li> <!-- 条件を満たすときのみ表示 (tasksが空)-->
+
+                <!-- submit ボタン押下時にaddItemを実行 -->
+                <form @submit.prevent="addItem"> <!-- v-on の省略-->
+                    <input type="text" v-model="newitem">
+                    <input type="submit" value="add task">
+                </form>
+            </ul>
+
+            <!-- 条件に応じて表示内容を変える-->
+            <div v-if="tasks.length"><h3>You can do it !</h3></div>
+            <div v-else><h3>You did it !</h3></div>
+
+        </div>
+
+
+        <script src="http://cdn.jsdelivr.net/npm/vue"></script>
+        <script src="js/vuescript.js"></script>
+    </body>
+
+</html>
