@@ -42,6 +42,14 @@ var vuetask = new Vue({
                 this.tasks.splice(index, 1);
             }
         }
+    },
+    computed: {
+        remaining: function() { 
+            let items = this.tasks.filter( function(task) {
+                return !task.status;
+            });
+            return items.length;
+        }
     }
 })
 

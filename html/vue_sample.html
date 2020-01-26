@@ -14,7 +14,12 @@
         </div>
 
         <div id="todo" class="container">
-            <h1> Todos</h1>
+            <h1>
+                Todos
+                <span class="info">
+                    ({{ remaining }}/{{ tasks.length }})
+                </span>
+            </h1>
 
             <ul>
                 <!-- vuetasks.data.tasksの中身を展開-->
