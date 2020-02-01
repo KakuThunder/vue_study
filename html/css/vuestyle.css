@@ -51,3 +51,7 @@ body {
     text-decoration: line-through;
     color: #bbb
 }
+
+#todo h1 > button {
+    float:right;
+}
