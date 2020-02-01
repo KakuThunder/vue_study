@@ -12,21 +12,19 @@ var vueapp = new Vue({
 var vuetask = new Vue({
     el:"#todo", //紐づけ先
     data: { //保持するデータ
-        tasks: [
-            {
-                name:"エキルレ",
-                status:true
-            },
-            {
-                name:"アラルレ",
-                status:false
-            },
-            {
-                name:"メインルレ",
-                status:false
-            }
-        ],
+        tasks: [],
         newitem:""
+    },
+    watch: {
+        tasks: {
+            handler: function() {
+                localStorage.setItem('todos',JSON.stringify(this.tasks))
+            },
+            deep: true
+        }
+    },
+    mounted: function(){
+        this.tasks = JSON.parse(localStorage.getItem('todos')) || [];
     },
     methods: { //持ちうる機能
         addItem: function(){
@@ -41,14 +39,20 @@ var vuetask = new Vue({
             if (confirm('are you sure')){
                 this.tasks.splice(index, 1);
             }
+        },
+
+        purge: function(){
+            if (!confirm('delete finished?')){
+                return;
+            }
+            this.tasks = this.remaining;
         }
     },
     computed: {
         remaining: function() { 
-            let items = this.tasks.filter( function(task) {
+            return this.tasks.filter( function(task) {
                 return !task.status;
             });
-            return items.length;
         }
     }
 })
