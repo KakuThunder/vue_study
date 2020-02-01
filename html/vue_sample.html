@@ -15,9 +15,10 @@
 
         <div id="todo" class="container">
             <h1>
+                <button @click="purge">Purge</button>
                 Todos
                 <span class="info">
-                    ({{ remaining }}/{{ tasks.length }})
+                    ({{ remaining.length }}/{{ tasks.length }})
                 </span>
             </h1>
 
